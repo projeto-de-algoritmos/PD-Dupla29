@@ -1,0 +1,17 @@
+[
+    
+    {
+        "TotalValue": 150.0 ,
+        "UserEmail": "murilo@email.com",
+        "StartTime": "2022-04-16T08:00:00.00",
+        "EndTime": "2022-04-16T08:30:00.00",
+        "Date": "2022-04-16T00:00:00.00"
+    },
+    {
+        "TotalValue": 150.0 ,
+        "UserEmail": "murilo2@email.com",
+        "StartTime": "2022-04-16T08:30:00.00",
+        "EndTime": "2022-04-16T09:00:00.00",
+        "Date": "2022-04-16T00:00:00.00"
+    }
+]

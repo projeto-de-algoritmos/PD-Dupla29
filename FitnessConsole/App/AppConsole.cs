@@ -16,8 +16,8 @@ namespace FitnessConsole.App
             try
             {
                 Console.WriteLine($"Digite o dia para os atendimentos: ");
-                var inputDate = int.Parse(Console.ReadLine());
-                var date = new DateTime(inputDate);
+                var inputDate = Console.ReadLine();
+                var date = DateTime.Parse(inputDate);
                 await _attendanceService.GetDateSchedule(date);
             }
             catch (System.Exception ex)
