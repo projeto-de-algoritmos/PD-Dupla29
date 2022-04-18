@@ -1,35 +1,34 @@
 using FitnessConsole.CORE.Entities;
 using FitnessConsole.Infrastructure.REPOSITORIES;
+using FitnessConsole.SERVICES;
 
 namespace FitnessConsole.Services
 {
     public class AttendanceService
     {
         private readonly AttendanceRepository _attendanceRepository;
-        public AttendanceService(AttendanceRepository attendanceRepository)
+        private readonly WeightIntervalScheduling _weightIntervalScheduling;
+
+        public AttendanceService(AttendanceRepository attendanceRepository, WeightIntervalScheduling weightIntervalScheduling)
         {
             _attendanceRepository = attendanceRepository;
+            _weightIntervalScheduling = weightIntervalScheduling;
         }
 
         public async Task<DaySchedule> GetDateSchedule(DateTime date)
         {
-            List<Attendance> listAttendance= (await _attendanceRepository.GetAttendanceByDate(date)).ToList();
-            DaySchedule daySchedule = GetDaySchedule(listAttendance);
-            return daySchedule;   
-        }
-
-        //Podera derivar em outra classe 
-        private DaySchedule GetDaySchedule(List<Attendance> listAttendance)
-        {
-            P(listAttendance.SingleOrDefault(at=> at.UserEmail=="murilo2@email.com") , listAttendance);
-            return new DaySchedule();
-        }
-
-        private Attendance P(Attendance attendance,List<Attendance> listAttendance)
-        {
-            Attendance previusAttendance =  listAttendance
-                .SingleOrDefault(at => at.EndTime <= attendance.StartTime);
-            return previusAttendance ?? null;    
+            try
+            {
+                List<Attendance> listAttendance= (await _attendanceRepository.GetAttendanceByDate(date))
+                    .OrderBy(at=>at.EndTime)
+                    .ToList();
+                DaySchedule daySchedule = _weightIntervalScheduling.GetDaySchedule(listAttendance);
+                return daySchedule;   
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

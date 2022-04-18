@@ -1,15 +1,22 @@
 [
     
     {
-        "TotalValue": 150.0 ,
-        "UserEmail": "murilo@email.com",
+        "TotalValue": 500.0 ,
+        "UserEmail": "teste1@email.com",
+        "StartTime": "2022-04-16T08:00:00.00",
+        "EndTime": "2022-04-16T09:00:00.00",
+        "Date": "2022-04-16T00:00:00.00"
+    },
+    {
+        "TotalValue": 300.0 ,
+        "UserEmail": "teste2@email.com",
         "StartTime": "2022-04-16T08:00:00.00",
         "EndTime": "2022-04-16T08:30:00.00",
         "Date": "2022-04-16T00:00:00.00"
     },
     {
-        "TotalValue": 150.0 ,
-        "UserEmail": "murilo2@email.com",
+        "TotalValue": 300.0 ,
+        "UserEmail": "teste3@email.com",
         "StartTime": "2022-04-16T08:30:00.00",
         "EndTime": "2022-04-16T09:00:00.00",
         "Date": "2022-04-16T00:00:00.00"

@@ -1,4 +1,6 @@
 using FitnessConsole.Services;
+using FitnessConsole.CORE.Entities;
+
 
 namespace FitnessConsole.App
 {
@@ -18,7 +20,11 @@ namespace FitnessConsole.App
                 Console.WriteLine($"Digite o dia para os atendimentos: ");
                 var inputDate = Console.ReadLine();
                 var date = DateTime.Parse(inputDate);
-                await _attendanceService.GetDateSchedule(date);
+                DaySchedule daySchedule = await _attendanceService.GetDateSchedule(date);
+                Console.WriteLine($"\nAgenda para o dia {inputDate}: ");
+                Console.Write($"{daySchedule.ToString()}");
+                
+                
             }
             catch (System.Exception ex)
             {
